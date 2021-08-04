@@ -24,3 +24,10 @@ hs_err_pid*
 
 # idea files
 .idea/*
+classic/.idea/compiler.xml
+classic/.idea/misc.xml
+classic/.idea/modules.xml
+classic/.idea/runConfigurations.xml
+classic/.idea/vcs.xml
+classic/classic.iml
+classic/classic.iml

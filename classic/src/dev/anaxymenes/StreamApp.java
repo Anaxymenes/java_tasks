@@ -9,6 +9,7 @@ import java.util.Objects;
     1. zwracającą listę książek, które zostały wydane
     2. zwracającą wartość typu String, który jako parametr przyjmuje listę książek, które nie zostały wydane.
         Wynikowy string składa się z tytułów książek oddzielonych przecinkiem np "Lorem ipsum, Integer varius"
+    3. zwracającą pierwszą książkę z listy posortowanej alfabetycznie, która jest wydana.
  */
 public class StreamApp {
     public static void main(String[] args) {
