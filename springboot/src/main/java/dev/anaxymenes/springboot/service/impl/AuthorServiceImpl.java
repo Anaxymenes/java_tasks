@@ -31,9 +31,10 @@ public class AuthorServiceImpl implements AuthorService {
      */
     @Override
     public List<AuthorResponse> getAllAuthorsWithNoBooks() {
-        List<Author> allAuthors = getAllAuthorDtos();
-        AuthorMapper mapper = new SimpleAuthorMapper();
-        List<AuthorResponse> responseList = new ArrayList<>();
+        final List<Author> allAuthors = getAllAuthorDtos();
+        final AuthorMapper mapper = new SimpleAuthorMapper();
+        final List<AuthorResponse> responseList = new ArrayList<>();
+
         for(Author author: allAuthors){
             responseList.add(mapper.map(author));
         }

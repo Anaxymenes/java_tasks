@@ -7,7 +7,9 @@ import java.util.Objects;
 public interface AuthorResponse {
     String getFullName();
 
-    static class AuthorBookCountResponse implements AuthorResponse{
+
+
+    class AuthorBookCountResponse implements AuthorResponse{
         private final String fullName;
         private final int countOfBooks;
 
@@ -39,7 +41,9 @@ public interface AuthorResponse {
         }
     }
 
-    static class SimpleAuthorResponse implements AuthorResponse{
+
+
+    class SimpleAuthorResponse implements AuthorResponse{
         private final String fullName;
 
         public SimpleAuthorResponse(String firstName, String lastName) {
@@ -48,7 +52,7 @@ public interface AuthorResponse {
 
         @Override
         public String getFullName() {
-            return null;
+            return this.fullName;
         }
     }
 }

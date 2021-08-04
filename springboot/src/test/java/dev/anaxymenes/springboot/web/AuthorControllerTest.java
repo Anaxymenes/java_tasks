@@ -19,8 +19,10 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -51,27 +53,28 @@ class AuthorControllerTest {
         author2.setBooks(Arrays.asList(book2,book3));
 
         final List<Author> authors = Arrays.asList(author1,author2);
+
         when(authorRepository.findAll()).thenReturn(authors);
+        when(authorRepository.findOne(any())).thenReturn(Optional.of(author1));
     }
 
     @Test
     public void shouldReturnAllAuthorsWithNumberOfBooks() throws Exception{
         //given
-        List<AuthorResponse> authorResponseList = Arrays.asList(
+        final List<AuthorResponse> authorResponseList = Arrays.asList(
                 new AuthorBookCountResponse("John","Doe",3),
                 new AuthorBookCountResponse("Adam","Lorem",2)
         );
-        String expectedBookResponse = new ObjectMapper().writeValueAsString(authorResponseList);
+        final String expectedBookResponse = new ObjectMapper().writeValueAsString(authorResponseList);
 
         //when
-        MvcResult result = this.mockMvc.perform(get("/authors/"))
+        final MvcResult result = this.mockMvc.perform(get("/authors/"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andReturn();
-        String jsonResult = result.getResponse().getContentAsString();
+        final String jsonResult = result.getResponse().getContentAsString();
 
         //then
-
         assertEquals(expectedBookResponse,jsonResult,"Response mismatch");
     }
 }

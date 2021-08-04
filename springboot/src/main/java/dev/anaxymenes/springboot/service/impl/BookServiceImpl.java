@@ -1,6 +1,5 @@
 package dev.anaxymenes.springboot.service.impl;
 
-import dev.anaxymenes.springboot.error.RecordNotFound;
 import dev.anaxymenes.springboot.model.dto.Book;
 import dev.anaxymenes.springboot.model.response.BookResponse;
 import dev.anaxymenes.springboot.repository.BookRepository;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class BookServiceImpl implements BookService {
@@ -38,25 +36,21 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book getFirstBookDto() {
-        final Optional<Book> book = bookRepository.findAll().stream().findFirst();
-        if(book.isPresent()){
-            return book.get();
-        }else{
-            throw new RecordNotFound("Cannot find any records.");
-        }
+        // TODO implementacja findFirst za pomocą stream i optional. Jeśli nie znajdzie nic, niech rzuci wyjątek RecordNotFound
+
+        throw new UnsupportedOperationException("Method not implemented");
     }
 
     @Override
     public String getOffer() {
         // TODO Metoda ma pobierać wszystkie książki a następnie zwracać je w następujący sposób (Lista posortowana alfabetycznie po tytułach i nazwiskach autora)
         /*
-         Lista dostępnych książek:
-         ksiązka1.tytuł - autor.imie autor.nazwisko,
-         książka2.tytuł - autor.imie autor.nazwisko,
-         książka3.tytuł - autor.imie autor.nazwisko
-         Reszta biblioteki w przygotowaniu
+         ksiązka1.tytuł - autor.imie autor.nazwisko,\n
+         książka2.tytuł - autor.imie autor.nazwisko,\n
+         książka3.tytuł - autor.imie autor.nazwisko.\n
+         Reszta biblioteki w przygotowaniu.
          */
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException("Method not implemented");
     }
 
 
